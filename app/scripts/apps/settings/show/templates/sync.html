@@ -7,9 +7,33 @@
             <option value="0">{{ i18n('No') }}</option>
             <option data-show="#group-dropboxKey" value="dropbox"<% if(models.cloudStorage === 'dropbox'){ %> selected<% } %>>Dropbox</option>
             <option value="remotestorage"<%if(models.cloudStorage === 'remotestorage'){ %> selected<% } %>>RemoteStorage</option>
+            
+            <option data-show="#group-gitlab-settings" value="gitlab"<%if(models.cloudStorage === 'gitlab'){ %> selected<% } %>>GitLab</option> 
         </select>
     </div>
 </div>
+
+
+
+<div class="form-group <% if (models.cloudStorage !== 'gitlab') { %> hidden<% } %>" id="group-gitlab-settings">
+    <div class="col-sm-12">
+        <label class="col-sm-3 control-label" for="gitlabRepoUrl">
+            <span class="pull-left">{{ i18n('GitLab Repo Url') }}</span>
+        </label>
+        <div class="col-sm-9">
+            <input id="gitlabRepoUrl" type="text" name="gitlabRepoUrl" class="form-control" value="{{ models.gitlabRepoUrl }}" placeholder="{{i18n('Required')}}" />
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <label class="col-sm-3 control-label" for="gitlabApiKey">
+            <span class="pull-left">{{ i18n('GitLab Api Key') }}</span>
+        </label>
+        <div class="col-sm-9">
+            <input id="gitlabApiKey" type="text" name="gitlabApiKey" class="form-control" value="{{ models.gitlabApiKey }}" placeholder="{{i18n('Required')}}" />
+        </div>
+    </div>
+</div>
+
 
 <div class="form-group <% if (models.cloudStorage !== 'dropbox') { %> hidden<% } %>" id="group-dropboxKey">
     <label class="col-sm-2 control-label" for="dropboxKey">

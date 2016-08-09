@@ -69,6 +69,10 @@ define([
                     modules2Load.push('modules/dropbox/module');
                     break;
 
+                case 'gitlab':
+                    modules2Load.push('modules/gitlab/module');
+                    break;
+
                 default:
                     break;
             }

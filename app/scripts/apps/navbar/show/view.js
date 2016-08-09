@@ -177,7 +177,7 @@ define([
                 },
 
                 isSyncEnabled: function() {
-                    return this.configs.cloudStorage === 'dropbox';
+                    return this.configs.cloudStorage !== '0' || !this.configs.cloudStorage;
                 },
 
                 profileLink: function(profileName) {
