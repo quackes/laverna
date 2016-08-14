@@ -36,6 +36,7 @@ requirejs.config({
     ],
     paths: {
         sjcl                  : '../bower_components/sjcl/sjcl',
+        'sjcl.sha1'           : '../bower_components/sjcl/core/sha1',
         text                  : '../bower_components/requirejs-text/text',
         jquery                : '../bower_components/jquery/dist/jquery',
         q                     : '../bower_components/q/q',

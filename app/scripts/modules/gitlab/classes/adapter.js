@@ -9,8 +9,9 @@
 define([
     'underscore',
     'q',
-    'jquery' // uses jquery for http 
-], function(_, Q, $) {
+    'jquery', // uses jquery for http 
+    'sjcl'
+], function(_, Q, $, sjcl) {
     'use strict';
 
     var Adapter = {
@@ -140,7 +141,7 @@ define([
                 this.buildHttpSettings('GET', '/repository/files', {'file_path' : fileName, 'ref' : 'master'})
             )
             .done(function(result) {
-                var contentString = result.encoding == 'base64' ? atob(result.content) : result.content;
+                var contentString = result.encoding === 'base64' ? atob(result.content) : result.content;
                 defer.resolve(JSON.parse(contentString));
             })
             .fail(function(err) {
@@ -194,7 +195,7 @@ define([
                 }
                 return localStorage.setItem(
                     'gitlab.hash.' + Adapter.profile + '.' + type,
-                    JSON.stringify(data)
+                    sjcl.hash.sha256.hash(JSON.stringify(data))
                 );
             });
         },

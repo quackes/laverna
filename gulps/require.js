@@ -64,7 +64,8 @@ module.exports = function(gulp, plugins) {
                 'backbone.sync',
                 'backbone.noworker.sync',
                 'modules/remotestorage/module',
-                'modules/dropbox/module'
+                'modules/dropbox/module',
+                'modules/gitlab/module'
             ],
             findNestedDependencies : true,
             generateSourceMaps     : true,

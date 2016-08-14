@@ -45,7 +45,6 @@ define([
         },
 
         initialize: function() {
-            console.log('gitlab init');
             
             var serverUrl = Radio.request('configs', 'get:config', 'gitlabServerUrl');
             var projectId = Radio.request('configs', 'get:config', 'gitlabProjectId');
@@ -78,7 +77,6 @@ define([
          * Start synchronizing immediately.
          */
         startSync: function() {
-            console.log('gitlab startsync');
             
             if (this.timeout) {
                 clearTimeout(this.timeout);
@@ -116,7 +114,6 @@ define([
          * Check for changes.
          */
         checkChanges: function() {
-            console.log('gitlab checkchanges');
             
             var promises = [],
                 self     = this;
@@ -175,7 +172,6 @@ define([
          * @return promise
          */
         syncAll: function(localData, remoteData, module) {
-            console.log('gitlab syncall');
             
             var promises,
                 encryptKeys = localData.model.prototype.encryptKeys;
@@ -198,7 +194,6 @@ define([
                 return;
             })
             .then(function() {
-                console.log('all done');
                 return adapter.updateHash(module);
             });
 
@@ -209,8 +204,6 @@ define([
          * remotely.
          */
         checkRemoteChanges: function(localData, remoteData, module) {
-            console.log('gitlab check remote changes');
-            
             var promises = [],
                 newData  = _.filter(remoteData, function(rModel) {
                     var model = _.findWhere(localData, {id: rModel.id});
@@ -234,8 +227,6 @@ define([
          * which were updated locally.
          */
         checkLocalChanges: function(localData, remoteData, module, encryptKeys) {
-            console.log('gitlab check local changes');
-            
             var promises = [];
 
             _.each(localData, function(lModel) {
@@ -244,7 +235,6 @@ define([
                     return;
                 }
 
-                console.log('Gitlab local changes:', lModel);
                 promises.push(function() {
                     return adapter.save(module, lModel, encryptKeys);
                 });
@@ -254,7 +244,6 @@ define([
         },
 
         startWatch: function() {
-            console.log('gitlab start watch');
             
             if (this.timeout) {
                 clearTimeout(this.timeout);
