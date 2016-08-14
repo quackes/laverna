@@ -17,11 +17,19 @@
 
 <div class="form-group <% if (models.cloudStorage !== 'gitlab') { %> hidden<% } %>" id="group-gitlab-settings">
     <div class="col-sm-12">
-        <label class="col-sm-3 control-label" for="gitlabRepoUrl">
-            <span class="pull-left">{{ i18n('GitLab Repo Url') }}</span>
+        <label class="col-sm-3 control-label" for="gitlabServerUrl">
+            <span class="pull-left">{{ i18n('GitLab Server Url') }}</span>
         </label>
         <div class="col-sm-9">
-            <input id="gitlabRepoUrl" type="text" name="gitlabRepoUrl" class="form-control" value="{{ models.gitlabRepoUrl }}" placeholder="{{i18n('Required')}}" />
+            <input id="gitlabServerUrl" type="text" name="gitlabServerUrl" class="form-control" value="{{ models.gitlabServerUrl }}" placeholder="{{i18n('Required')}}" />
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <label class="col-sm-3 control-label" for="gitlabProjectId">
+            <span class="pull-left">{{ i18n('GitLab Project Id') }}</span>
+        </label>
+        <div class="col-sm-9">
+            <input id="gitlabProjectId" type="text" name="gitlabProjectId" class="form-control" value="{{ models.gitlabProjectId }}" placeholder="{{i18n('Required')}}" />
         </div>
     </div>
     <div class="col-sm-12">
@@ -32,6 +40,7 @@
             <input id="gitlabApiKey" type="text" name="gitlabApiKey" class="form-control" value="{{ models.gitlabApiKey }}" placeholder="{{i18n('Required')}}" />
         </div>
     </div>
+    
 </div>
 
 
